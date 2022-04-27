@@ -3,10 +3,10 @@ const VERSION = "version_01";
 const CACHE_NAME = APP_PREFIX + VERSION;
 
 const FILES_TO_CACHE = [
-  "./index.html",
-  "./css/style.css",
-  "./js/idb.js",
-  "./js/index.js",
+  "/index.html",
+  "/css/styles.css",
+  "/js/idb.js",
+  "/js/index.js",
 ];
 
 self.addEventListener("install", function (e) {
@@ -17,3 +17,24 @@ self.addEventListener("install", function (e) {
     })
   );
 });
+
+self.addEventListener("activate", function (e) {
+  e.waitUntil(
+    caches.keys().then(function (keyList) {
+      let cacheKeeplist = keyList.filter(function (key) {
+        return key.indexOf(APP_PREFIX);
+      });
+      cacheKeeplist.push(CACHE_NAME);
+
+      return Promise.all(
+        keyList.map(function (key, i) {
+          if (cacheKeeplist.indexOf(key) === -1) {
+            console.log("deleting cache: " + keyList[i]);
+            return caches.delete(keyList[i]);
+          }
+        })
+      );
+    })
+  );
+});
+
