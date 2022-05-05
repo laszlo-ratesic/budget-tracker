@@ -45,6 +45,6 @@
     ],
     "theme_color": "#ffffff",
     "background_color": "#01579b",
-    "start_url": "http://money-do.herokuapp.com/",
+    "start_url": "https://money-do.herokuapp.com/",
     "display": "fullscreen"
 }
