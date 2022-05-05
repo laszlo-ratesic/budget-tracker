@@ -35,7 +35,7 @@ Replacing the above placeholder with the link copied from GitHub. This will clon
 
 ## 👨‍🏫 Usage
 
-
+![Mockup of MoneyDo.](./public/mockup.gif)
 
 ## 🥂 Credits
 
